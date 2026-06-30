@@ -1,11 +1,11 @@
 const pdfFiles = [
-  { title: "テキスト解答 1", file: "text-answer-01.pdf" },
-  { title: "テキスト解答 2", file: "text-answer-02.pdf" },
-  { title: "テキスト解答 3", file: "text-answer-03.pdf" },
-  { title: "テキスト解答 4", file: "text-answer-04.pdf" },
-  { title: "テキスト解答 5", file: "text-answer-05.pdf" },
-  { title: "テキスト解答 6", file: "text-answer-06.pdf" },
-  { title: "テキスト解答 7", file: "text-answer-07.pdf" }
+  { title: "テキスト解答 1", file: "Lektion1.pdf" },
+  { title: "テキスト解答 2", file: "Lektion2.pdf" },
+  { title: "テキスト解答 3", file: "Lektion3.pdf" },
+  { title: "テキスト解答 4", file: "Lektion4.pdf" },
+  { title: "テキスト解答 5", file: "Lektion5.pdf" },
+  { title: "テキスト解答 6", file: "Lektion6.pdf" },
+  { title: "テキスト解答 7", file: "Lektion7.pdf" }
 ];
 
 const pdfIcon = `

@@ -1,28 +1,28 @@
-<!doctype html>
-<html lang="ja">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="テキスト解答PDFを一覧で確認できるページです。">
-  <title>テキスト解答ページ</title>
-  <link rel="stylesheet" href="./styles.css">
-</head>
-<body>
-  <main class="page-shell">
-    <section class="document-panel" aria-labelledby="page-title">
-      <header class="page-header">
-        <p class="eyebrow">PDF DOCUMENTS</p>
-        <h1 id="page-title">テキスト解答ページ</h1>
-      </header>
+# テキスト解答ページ
 
-      <ul id="pdf-list" class="pdf-list" aria-label="PDFファイル一覧"></ul>
+GitHub経由でVercelにデプロイできる静的ウェブページです。
 
-      <noscript>
-        <p class="noscript-message">このページを表示するにはJavaScriptを有効にしてください。</p>
-      </noscript>
-    </section>
-  </main>
+## ファイルの差し替え
 
-  <script src="./app.js"></script>
-</body>
-</html>
+`pdfs` フォルダー内のPDFを、同じファイル名のまま差し替えてください。
+
+- `text-answer-01.pdf`
+- `text-answer-02.pdf`
+- `text-answer-03.pdf`
+- `text-answer-04.pdf`
+- `text-answer-05.pdf`
+- `text-answer-06.pdf`
+- `text-answer-07.pdf`
+
+表示名またはファイル名を変更する場合は、`app.js` の `pdfFiles` を編集します。
+
+「アップデート」ボタンは、ブラウザーの古いキャッシュを避けて最新版のPDFを開きます。
+
+## GitHubからVercelへデプロイ
+
+1. このフォルダー内のファイルをGitHubリポジトリにアップロードします。
+2. Vercelで `Add New Project` を選び、そのGitHubリポジトリを指定します。
+3. Framework Presetは `Other` のままにします。
+4. Build CommandとOutput Directoryは空欄のままデプロイします。
+
+PDFを更新するときは、GitHub上の `pdfs` フォルダー内のファイルを差し替えてコミットします。Vercelが自動的に再デプロイします。

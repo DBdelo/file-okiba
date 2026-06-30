@@ -1,74 +1,47 @@
-%PDF-1.3
-%���� ReportLab Generated PDF document (opensource)
-1 0 obj
-<<
-/F1 2 0 R /F2 3 0 R
->>
-endobj
-2 0 obj
-<<
-/BaseFont /Helvetica /Encoding /WinAnsiEncoding /Name /F1 /Subtype /Type1 /Type /Font
->>
-endobj
-3 0 obj
-<<
-/BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding /Name /F2 /Subtype /Type1 /Type /Font
->>
-endobj
-4 0 obj
-<<
-/Contents 8 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 7 0 R /Resources <<
-/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
->> /Rotate 0 /Trans <<
+const pdfFiles = [
+  { title: "テキスト解答 1", file: "text-answer-01.pdf" },
+  { title: "テキスト解答 2", file: "text-answer-02.pdf" },
+  { title: "テキスト解答 3", file: "text-answer-03.pdf" },
+  { title: "テキスト解答 4", file: "text-answer-04.pdf" },
+  { title: "テキスト解答 5", file: "text-answer-05.pdf" },
+  { title: "テキスト解答 6", file: "text-answer-06.pdf" },
+  { title: "テキスト解答 7", file: "text-answer-07.pdf" }
+];
 
->> 
-  /Type /Page
->>
-endobj
-5 0 obj
-<<
-/PageMode /UseNone /Pages 7 0 R /Type /Catalog
->>
-endobj
-6 0 obj
-<<
-/Author (anonymous) /CreationDate (D:20260630040058+00'00') /Creator (anonymous) /Keywords () /ModDate (D:20260630040058+00'00') /Producer (ReportLab PDF Library - \(opensource\)) 
-  /Subject (unspecified) /Title (Text Answer 7) /Trapped /False
->>
-endobj
-7 0 obj
-<<
-/Count 1 /Kids [ 4 0 R ] /Type /Pages
->>
-endobj
-8 0 obj
-<<
-/Filter [ /ASCII85Decode /FlateDecode ] /Length 227
->>
-stream
-GarWrd0bIZ'F*KBTAmVe^u^;1l`MXSl69[j0_C1@1s(G7IT%I#@PGfOf_6JJ^`>VoBa*i<ed2Qt:cWdA6Du]#ar>@%&b`bk=ZkgD6V%4qEYc\72ls5[oWm-"D+>,X-.EB=oqhXhbc+u>?)]P>-.nr.0g(B+add]<,j7j)\-YI!p8JMn=IGM1fPg/9O(:*;-_b2aqEMBjBFF-lpIE=9,\s]57_sER:p<b;~>endstream
-endobj
-xref
-0 9
-0000000000 65535 f 
-0000000061 00000 n 
-0000000102 00000 n 
-0000000209 00000 n 
-0000000321 00000 n 
-0000000524 00000 n 
-0000000592 00000 n 
-0000000858 00000 n 
-0000000917 00000 n 
-trailer
-<<
-/ID 
-[<ad3a537bf5ca54d14f5b5a0549a84429><ad3a537bf5ca54d14f5b5a0549a84429>]
-% ReportLab generated PDF document -- digest (opensource)
+const pdfIcon = `
+  <svg class="pdf-icon" viewBox="0 0 24 24" aria-hidden="true">
+    <path fill="currentColor" d="M6.75 2.5h7.19c.4 0 .78.16 1.06.44l3.56 3.56c.28.28.44.66.44 1.06v12.19A1.75 1.75 0 0 1 17.25 21.5H6.75A1.75 1.75 0 0 1 5 19.75V4.25A1.75 1.75 0 0 1 6.75 2.5Zm6.5 1.7v3.55c0 .41.34.75.75.75h3.3L13.25 4.2ZM8 12.25c0-.41.34-.75.75-.75h2a2.25 2.25 0 0 1 0 4.5H9.5v1.25a.75.75 0 0 1-1.5 0v-5Zm1.5.75v1.5h1.25a.75.75 0 0 0 0-1.5H9.5Zm4-1.5h1.25a2.75 2.75 0 0 1 0 5.5H13.5v-5Zm1.5 1.55v2.4a1.25 1.25 0 0 0 0-2.4Zm2.75-.8c0-.41.34-.75.75-.75h2.25a.75.75 0 0 1 0 1.5h-1.5v.75h1.25a.75.75 0 0 1 0 1.5h-1.25v2a.75.75 0 0 1-1.5 0v-5Z"/>
+  </svg>`;
 
-/Info 6 0 R
-/Root 5 0 R
-/Size 9
->>
-startxref
-1234
-%%EOF
+const list = document.getElementById("pdf-list");
+
+pdfFiles.forEach(({ title, file }) => {
+  const pdfPath = `./pdfs/${file}`;
+  const item = document.createElement("li");
+  item.className = "pdf-item";
+
+  item.innerHTML = `
+    <div class="pdf-main">
+      <a class="pdf-icon-link" href="${pdfPath}" target="_blank" rel="noopener" aria-label="${title}を開く">
+        ${pdfIcon}
+      </a>
+      <div class="pdf-copy">
+        <a class="pdf-title-link" href="${pdfPath}" target="_blank" rel="noopener">${title}</a>
+        <p class="pdf-file-name">${file}</p>
+      </div>
+    </div>
+    <button class="update-button" type="button" data-pdf-path="${pdfPath}" aria-label="${title}の最新版を開く">
+      アップデート
+    </button>`;
+
+  list.appendChild(item);
+});
+
+list.addEventListener("click", (event) => {
+  const button = event.target.closest(".update-button");
+  if (!button) return;
+
+  const url = new URL(button.dataset.pdfPath, window.location.href);
+  url.searchParams.set("updated", Date.now().toString());
+  window.open(url.toString(), "_blank", "noopener");
+});

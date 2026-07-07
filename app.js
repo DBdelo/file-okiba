@@ -1,11 +1,14 @@
 const pdfFiles = [
-  { title: "テキスト解答 1", file: "Lektion1.pdf" },
-  { title: "テキスト解答 2", file: "Lektion2.pdf" },
-  { title: "テキスト解答 3", file: "Lektion3.pdf" },
-  { title: "テキスト解答 4", file: "Lektion4.pdf" },
-  { title: "テキスト解答 5", file: "Lektion5.pdf" },
-  { title: "テキスト解答 6", file: "Lektion6.pdf" },
-  { title: "テキスト解答 7", file: "Lektion7.pdf" }
+  { title: "Lektion 1", file: "Lektion1.pdf" },
+  { title: "Lektion 2", file: "Lektion2.pdf" },
+  { title: "Lektion 3", file: "Lektion3.pdf" },
+  { title: "Lektion 4", file: "Lektion4.pdf" },
+  { title: "Lektion 5", file: "Lektion5.pdf" },
+  { title: "Lektion 6", file: "Lektion6.pdf" },
+  { title: "Lektion 7", file: "Lektion7.pdf" },
+  { title: "2025前期期末試験問題", file: "2025前期期末試験問題.pdf" },
+  { title: "2025前期期末試験解答", file: "2025前期期末試験解答.pdf" },
+  { title: "前期まとめ2025", file: "前期まとめ2025.pdf" }
 ];
 
 const pdfIcon = `
@@ -20,20 +23,42 @@ pdfFiles.forEach(({ title, file }) => {
   const item = document.createElement("li");
   item.className = "pdf-item";
 
-  item.innerHTML = `
-    <div class="pdf-main">
-      <a class="pdf-icon-link" href="${pdfPath}" target="_blank" rel="noopener" aria-label="${title}を開く">
-        ${pdfIcon}
-      </a>
-      <div class="pdf-copy">
-        <a class="pdf-title-link" href="${pdfPath}" target="_blank" rel="noopener">${title}</a>
-        <p class="pdf-file-name">${file}</p>
-      </div>
-    </div>
-    <button class="update-button" type="button" data-pdf-path="${pdfPath}" aria-label="${title}の最新版を開く">
-      アップデート
-    </button>`;
+  const main = document.createElement("div");
+  main.className = "pdf-main";
 
+  const iconLink = document.createElement("a");
+  iconLink.className = "pdf-icon-link";
+  iconLink.href = pdfPath;
+  iconLink.target = "_blank";
+  iconLink.rel = "noopener";
+  iconLink.setAttribute("aria-label", `${title}を開く`);
+  iconLink.innerHTML = pdfIcon;
+
+  const copy = document.createElement("div");
+  copy.className = "pdf-copy";
+
+  const titleLink = document.createElement("a");
+  titleLink.className = "pdf-title-link";
+  titleLink.href = pdfPath;
+  titleLink.target = "_blank";
+  titleLink.rel = "noopener";
+  titleLink.textContent = title;
+
+  const fileName = document.createElement("p");
+  fileName.className = "pdf-file-name";
+  fileName.textContent = file;
+
+  copy.append(titleLink, fileName);
+  main.append(iconLink, copy);
+
+  const button = document.createElement("button");
+  button.className = "update-button";
+  button.type = "button";
+  button.dataset.pdfPath = pdfPath;
+  button.setAttribute("aria-label", `${title}の最新版を開く`);
+  button.textContent = "アップデート";
+
+  item.append(main, button);
   list.appendChild(item);
 });
 

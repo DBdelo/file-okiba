@@ -2,25 +2,34 @@
 
 GitHub経由でVercelにデプロイできる静的ウェブページです。
 
-## ファイルの差し替え
+## 構成
 
-`pdfs` フォルダー内のPDFを、同じファイル名のまま差し替えてください。
+- `index.html`: ページ本体
+- `styles.css`: 画面デザイン
+- `app.js`: PDF一覧の設定
+- `vercel.json`: Vercel用のキャッシュ設定
+- `pdfs/`: 掲載するPDFファイル
 
-- `text-answer-01.pdf`
-- `text-answer-02.pdf`
-- `text-answer-03.pdf`
-- `text-answer-04.pdf`
-- `text-answer-05.pdf`
-- `text-answer-06.pdf`
-- `text-answer-07.pdf`
+## 掲載PDF
 
-表示名またはファイル名を変更する場合は、`app.js` の `pdfFiles` を編集します。
+- `Lektion1.pdf`
+- `Lektion2.pdf`
+- `Lektion3.pdf`
+- `Lektion4.pdf`
+- `Lektion5.pdf`
+- `Lektion6.pdf`
+- `Lektion7.pdf`
+- `2025前期期末試験問題.pdf`
+- `2025前期期末試験解答.pdf`
+- `前期まとめ2025.pdf`
+
+表示名またはファイル名を変更する場合は、`app.js` の `pdfFiles` を編集してください。
 
 「アップデート」ボタンは、ブラウザーの古いキャッシュを避けて最新版のPDFを開きます。
 
 ## GitHubからVercelへデプロイ
 
-1. このフォルダー内のファイルをGitHubリポジトリにアップロードします。
+1. `Lektion` フォルダー内のファイルをGitHubリポジトリにアップロードします。
 2. Vercelで `Add New Project` を選び、そのGitHubリポジトリを指定します。
 3. Framework Presetは `Other` のままにします。
 4. Build CommandとOutput Directoryは空欄のままデプロイします。

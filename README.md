@@ -10,6 +10,11 @@ GitHub経由でVercelにデプロイできる静的ウェブページです。
 - `vercel.json`: Vercel用のキャッシュ設定
 - `pdfs/`: 掲載するPDFファイル
 
+## 文字化け対策
+
+ZIPをWindowsで開いたときの日本語ファイル名の文字化けを避けるため、`pdfs/` 内の実ファイル名は英数字にしています。
+ページ上では日本語の表示名で表示されます。
+
 ## 掲載PDF
 
 - `Lektion1.pdf`
@@ -19,9 +24,9 @@ GitHub経由でVercelにデプロイできる静的ウェブページです。
 - `Lektion5.pdf`
 - `Lektion6.pdf`
 - `Lektion7.pdf`
-- `2025前期期末試験問題.pdf`
-- `2025前期期末試験解答.pdf`
-- `前期まとめ2025.pdf`
+- `exam_2025_first_term_questions.pdf`（表示名: 2025前期期末試験問題.pdf）
+- `exam_2025_first_term_answers.pdf`（表示名: 2025前期期末試験解答.pdf）
+- `review_2025_first_term.pdf`（表示名: 前期まとめ2025.pdf）
 
 表示名またはファイル名を変更する場合は、`app.js` の `pdfFiles` を編集してください。
 
@@ -34,4 +39,5 @@ GitHub経由でVercelにデプロイできる静的ウェブページです。
 3. Framework Presetは `Other` のままにします。
 4. Build CommandとOutput Directoryは空欄のままデプロイします。
 
-PDFを更新するときは、GitHub上の `pdfs` フォルダー内のファイルを差し替えてコミットします。Vercelが自動的に再デプロイします。
+PDFを更新するときは、GitHub上の `pdfs` フォルダー内のファイルを差し替えてコミットします。
+Vercelが自動的に再デプロイします。

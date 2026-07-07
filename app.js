@@ -1,14 +1,14 @@
 const pdfFiles = [
-  { title: "Lektion 1", file: "Lektion1.pdf" },
-  { title: "Lektion 2", file: "Lektion2.pdf" },
-  { title: "Lektion 3", file: "Lektion3.pdf" },
-  { title: "Lektion 4", file: "Lektion4.pdf" },
-  { title: "Lektion 5", file: "Lektion5.pdf" },
-  { title: "Lektion 6", file: "Lektion6.pdf" },
-  { title: "Lektion 7", file: "Lektion7.pdf" },
-  { title: "2025前期期末試験問題", file: "2025前期期末試験問題.pdf" },
-  { title: "2025前期期末試験解答", file: "2025前期期末試験解答.pdf" },
-  { title: "前期まとめ2025", file: "前期まとめ2025.pdf" }
+  { title: "Lektion 1", file: "Lektion1.pdf", displayName: "Lektion1.pdf" },
+  { title: "Lektion 2", file: "Lektion2.pdf", displayName: "Lektion2.pdf" },
+  { title: "Lektion 3", file: "Lektion3.pdf", displayName: "Lektion3.pdf" },
+  { title: "Lektion 4", file: "Lektion4.pdf", displayName: "Lektion4.pdf" },
+  { title: "Lektion 5", file: "Lektion5.pdf", displayName: "Lektion5.pdf" },
+  { title: "Lektion 6", file: "Lektion6.pdf", displayName: "Lektion6.pdf" },
+  { title: "Lektion 7", file: "Lektion7.pdf", displayName: "Lektion7.pdf" },
+  { title: "2025前期期末試験問題", file: "exam_2025_first_term_questions.pdf", displayName: "2025前期期末試験問題.pdf" },
+  { title: "2025前期期末試験解答", file: "exam_2025_first_term_answers.pdf", displayName: "2025前期期末試験解答.pdf" },
+  { title: "前期まとめ2025", file: "review_2025_first_term.pdf", displayName: "前期まとめ2025.pdf" }
 ];
 
 const pdfIcon = `
@@ -18,8 +18,8 @@ const pdfIcon = `
 
 const list = document.getElementById("pdf-list");
 
-pdfFiles.forEach(({ title, file }) => {
-  const pdfPath = `./pdfs/${file}`;
+pdfFiles.forEach(({ title, file, displayName }) => {
+  const pdfPath = `./pdfs/${encodeURIComponent(file)}`;
   const item = document.createElement("li");
   item.className = "pdf-item";
 
@@ -46,7 +46,7 @@ pdfFiles.forEach(({ title, file }) => {
 
   const fileName = document.createElement("p");
   fileName.className = "pdf-file-name";
-  fileName.textContent = file;
+  fileName.textContent = displayName || file;
 
   copy.append(titleLink, fileName);
   main.append(iconLink, copy);

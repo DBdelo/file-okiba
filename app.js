@@ -56,7 +56,7 @@ pdfFiles.forEach(({ title, file, displayName }) => {
   button.type = "button";
   button.dataset.pdfPath = pdfPath;
   button.setAttribute("aria-label", `${title}の最新版を開く`);
-  button.textContent = "アップデート";
+  button.textContent = "ダウンロード";
 
   item.append(main, button);
   list.appendChild(item);
